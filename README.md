@@ -5,3 +5,7 @@ We all need email... for better or worse. This service will send transactional e
 ## Work In Progress
 
 We're building things out actively... hopefully getting close to showing something soon!
+
+## Accessibility
+
+This application is designed with accessibility in mind, including screen reader support, keyboard navigation, and WCAG 2.1 compliance. For detailed information about accessibility features, see our [Accessibility Guide](docs/ACCESSIBILITY.md).

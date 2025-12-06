@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- WCAG 2.4.2: Page Titled - Descriptive title for screen readers -->
+    <title>Tailwind Traders Mail Services API - Accessible Documentation</title>
+    <link rel="stylesheet" type="text/css" href="./swagger-ui.css">
+    <style>
+        /* 
+         * Embedded accessibility CSS for critical styles
+         * Full styles available in swagger-accessibility.css
+         */
+        
+        /* WCAG 2.4.1: Bypass Blocks - Skip navigation link */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 10000;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+        
+        /* WCAG 1.4.3: High contrast mode support */
+        @media (prefers-contrast: high) {
+            .swagger-ui .opblock {
+                border: 2px solid currentColor;
+            }
+        }
+        
+        /* WCAG 2.3.3: Reduced motion support for vestibular disorders */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* WCAG 2.4.7: Focus Visible - 3px outline with sufficient contrast */
+        .swagger-ui button:focus,
+        .swagger-ui a:focus,
+        .swagger-ui input:focus,
+        .swagger-ui select:focus,
+        .swagger-ui textarea:focus {
+            outline: 3px solid #4A90E2;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        WCAG 2.4.1: Bypass Blocks
+        Skip navigation link allows keyboard users to jump directly to main content
+        Hidden off-screen by default, becomes visible on keyboard focus
+    -->
+    <a href="#swagger-ui" class="skip-link">Skip to API documentation</a>
+    
+    <!-- 
+        WCAG 4.1.3: Status Messages
+        ARIA live region for announcing dynamic content changes to screen readers
+        - role="status": Indicates status updates
+        - aria-live="polite": Won't interrupt current speech
+        - aria-atomic="true": Entire message announced as one unit
+        Positioned off-screen but accessible to assistive technologies
+    -->
+    <div id="aria-live-region" 
+         role="status" 
+         aria-live="polite" 
+         aria-atomic="true"
+         style="position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden;">
+    </div>
+    
+    <!-- 
+        Main content container with semantic role and label
+        role="main": Identifies primary content area
+        aria-label: Provides descriptive label for screen readers
+    -->
+    <div id="swagger-ui" role="main" aria-label="API Documentation"></div>
+    
+    <!-- Swagger UI JavaScript bundles -->
+    <script src="./swagger-ui-bundle.js"></script>
+    <script src="./swagger-ui-standalone-preset.js"></script>
+    <script>
+        window.onload = function() {
+            /*
+             * Initialize Swagger UI with accessibility enhancements
+             * Configuration provides deep linking, API documentation, and download support
+             */
+            const ui = SwaggerUIBundle({
+                url: window.location.pathname + "swagger/v1/swagger.json",
+                dom_id: '#swagger-ui',
+                deepLinking: true,  // Enable URL hash navigation for bookmarking
+                presets: [
+                    SwaggerUIBundle.presets.apis,
+                    SwaggerUIStandalonePreset
+                ],
+                plugins: [
+                    SwaggerUIBundle.plugins.DownloadUrl
+                ],
+                layout: "StandaloneLayout",
+                onComplete: function() {
+                    // Swagger UI has finished rendering, now enhance with accessibility features
+                    enhanceAccessibility();
+                    
+                    // WCAG 4.1.3: Announce page load completion to screen readers
+                    announceToScreenReader("API documentation loaded successfully. Use arrow keys to navigate.");
+                }
+            });
+            
+            // Make UI instance available globally for debugging
+            window.ui = ui;
+            
+            /**
+             * Enhance accessibility of Swagger UI elements
+             * Adds ARIA attributes and keyboard support to dynamically generated content
+             * WCAG 2.1.1 (Keyboard), 4.1.2 (Name, Role, Value), 4.1.3 (Status Messages)
+             */
+            function enhanceAccessibility() {
+                // Add ARIA labels to operation blocks (GET, POST, PUT, etc.)
+                const operations = document.querySelectorAll('.opblock');
+                operations.forEach((op, index) => {
+                    const method = op.querySelector('.opblock-summary-method');
+                    const path = op.querySelector('.opblock-summary-path');
+                    
+                    if (method && path) {
+                        const methodText = method.textContent.trim();
+                        const pathText = path.textContent.trim();
+                        
+                        // WCAG 4.1.2: Provide accessible name
+                        // Screen readers will announce: "GET /about API operation"
+                        op.setAttribute('aria-label', `${methodText} ${pathText} API operation`);
+                        
+                        // Make operation expandable accessible
+                        const summary = op.querySelector('.opblock-summary');
+                        if (summary) {
+                            // WCAG 4.1.2: Define semantic role
+                            summary.setAttribute('role', 'button');
+                            
+                            // WCAG 4.1.3: Communicate expansion state
+                            summary.setAttribute('aria-expanded', 'false');
+                            
+                            // WCAG 2.1.1: Enable keyboard focus
+                            summary.setAttribute('tabindex', '0');
+                            
+                            // WCAG 2.1.1: Add keyboard support for Enter and Space keys
+                            summary.addEventListener('keydown', function(e) {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    // Prevent default to avoid page scroll on Space
+                                    e.preventDefault();
+                                    
+                                    // Trigger click to maintain consistency with mouse
+                                    this.click();
+                                    
+                                    // Update aria-expanded attribute to reflect new state
+                                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                                    this.setAttribute('aria-expanded', !isExpanded);
+                                    
+                                    // WCAG 4.1.3: Announce state change to screen readers
+                                    announceToScreenReader(
+                                        `${methodText} ${pathText} operation ${!isExpanded ? 'expanded' : 'collapsed'}`
+                                    );
+                                }
+                            });
+                        }
+                    }
+                });
+                
+                // Enhance Try it out buttons
+                const tryButtons = document.querySelectorAll('.try-out__btn');
+                tryButtons.forEach(btn => {
+                    btn.setAttribute('aria-label', 'Try this API operation');
+                });
+                
+                // Enhance Execute buttons
+                const executeButtons = document.querySelectorAll('.execute');
+                executeButtons.forEach(btn => {
+                    btn.setAttribute('aria-label', 'Execute API request');
+                });
+                
+                // Add ARIA labels to response sections
+                const responses = document.querySelectorAll('.responses-wrapper');
+                responses.forEach(resp => {
+                    resp.setAttribute('aria-label', 'API response section');
+                });
+                
+                // Enhance parameter inputs
+                const inputs = document.querySelectorAll('.swagger-ui input, .swagger-ui textarea');
+                inputs.forEach(input => {
+                    if (!input.getAttribute('aria-label') && !input.getAttribute('id')) {
+                        const label = input.closest('tr')?.querySelector('td:first-child')?.textContent.trim();
+                        if (label) {
+                            input.setAttribute('aria-label', label + ' parameter');
+                        }
+                    }
+                });
+            }
+            
+            // Function to announce messages to screen readers
+            function announceToScreenReader(message) {
+                const liveRegion = document.getElementById('aria-live-region');
+                if (liveRegion) {
+                    liveRegion.textContent = '';
+                    setTimeout(() => {
+                        liveRegion.textContent = message;
+                    }, 100);
+                }
+            }
+            
+            // Monitor for dynamic content changes
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.addedNodes.length > 0) {
+                        // Re-enhance accessibility for new elements
+                        enhanceAccessibility();
+                    }
+                });
+            });
+            
+            // Observe the swagger-ui container for changes
+            const swaggerContainer = document.getElementById('swagger-ui');
+            if (swaggerContainer) {
+                observer.observe(swaggerContainer, {
+                    childList: true,
+                    subtree: true
+                });
+            }
+            
+            // Keyboard shortcuts configuration
+            const KEYBOARD_SHORTCUTS_HELP = `
+                Keyboard shortcuts:
+                - Tab: Navigate through interactive elements
+                - Enter or Space: Activate buttons and expand/collapse sections
+                - Escape: Close expanded sections
+                - Alt + H: Show this help message
+            `;
+            
+            // Keyboard shortcuts
+            document.addEventListener('keydown', function(e) {
+                // Alt + H: Show keyboard shortcuts help
+                if (e.altKey && e.key === 'h') {
+                    e.preventDefault();
+                    announceToScreenReader(KEYBOARD_SHORTCUTS_HELP);
+                    alert(KEYBOARD_SHORTCUTS_HELP);
+                }
+            });
+            
+            // Announce loading states
+            window.addEventListener('beforeunload', function() {
+                announceToScreenReader('Leaving API documentation page');
+            });
+        };
+    </script>
+</body>
+</html>
