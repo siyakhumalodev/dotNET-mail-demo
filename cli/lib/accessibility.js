@@ -1,40 +1,66 @@
 /**
  * Accessibility Helper for CLI
  * Provides screen reader support and accessible feedback for command-line operations
+ * 
+ * This module ensures terminal applications are usable with screen readers like:
+ * - NVDA (Windows)
+ * - JAWS (Windows)
+ * - VoiceOver (macOS)
+ * - Orca (Linux)
+ * 
+ * All functions follow terminal accessibility best practices:
+ * - Clear, descriptive text output
+ * - No visual-only indicators
+ * - Consistent formatting for screen readers
  */
 
 const consola = require('consola');
 
 /**
  * Announce a message in an accessible way
+ * Removes control characters that can confuse screen readers
+ * 
  * @param {string} message - The message to announce
  * @param {string} type - Type of message: 'success', 'error', 'info', 'warn'
+ * 
+ * @example
+ * announce('Operation completed', 'success');  // "✔ Operation completed"
+ * announce('File not found', 'error');         // "✖ File not found"
  */
 function announce(message, type = 'info') {
-    // Remove spinner characters and ANSI codes for screen readers
+    // Remove ANSI control characters (used for colors/formatting) 
+    // that can interfere with screen reader pronunciation
+    // Unicode range: \u0000-\u001F (C0 controls), \u007F-\u009F (C1 controls)
     const cleanMessage = message.replace(/[\u0000-\u001F\u007F-\u009F]/g, '');
     
+    // Use consola for consistent, accessible output with appropriate icons
     switch(type) {
         case 'success':
-            consola.success(cleanMessage);
+            consola.success(cleanMessage);  // Green checkmark + message
             break;
         case 'error':
-            consola.error(cleanMessage);
+            consola.error(cleanMessage);    // Red X + message
             break;
         case 'warn':
-            consola.warn(cleanMessage);
+            consola.warn(cleanMessage);     // Yellow warning + message
             break;
         case 'info':
         default:
-            consola.info(cleanMessage);
+            consola.info(cleanMessage);     // Blue info + message
             break;
     }
 }
 
 /**
  * Announce a progress update
+ * Useful for long-running operations to keep users informed
+ * 
  * @param {string} action - The action being performed
  * @param {string} status - Current status
+ * 
+ * @example
+ * announceProgress('Sending emails', '50% complete');
+ * // Output: "ℹ Sending emails: 50% complete"
  */
 function announceProgress(action, status) {
     const message = `${action}: ${status}`;
@@ -43,18 +69,31 @@ function announceProgress(action, status) {
 
 /**
  * Announce a list of items in an accessible way
+ * Provides count and position information for screen reader navigation
+ * 
  * @param {Array} items - Array of items to announce
  * @param {string} itemType - Type of items (e.g., "broadcast", "contact")
+ * 
+ * @example
+ * announceList([{name: 'email1.md'}, {name: 'email2.md'}], 'broadcast');
+ * // Output:
+ * // "ℹ Found 2 broadcasts"
+ * // "1 of 2: email1.md"
+ * // "2 of 2: email2.md"
  */
 function announceList(items, itemType = 'item') {
     const count = items.length;
+    
+    // Announce if list is empty
     if (count === 0) {
         announce(`No ${itemType}s found`, 'info');
         return;
     }
     
+    // Announce total count first for context
     announce(`Found ${count} ${itemType}${count > 1 ? 's' : ''}`, 'info');
     
+    // Announce each item with position for screen reader navigation
     items.forEach((item, index) => {
         const position = `${index + 1} of ${count}`;
         console.log(`${position}: ${item.name || item}`);

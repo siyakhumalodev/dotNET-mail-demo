@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- WCAG 2.4.2: Page Titled - Descriptive title for screen readers -->
     <title>Tailwind Traders Mail Services API - Accessible Documentation</title>
     <link rel="stylesheet" type="text/css" href="./swagger-ui.css">
     <style>
-        /* Accessibility enhancements */
+        /* 
+         * Embedded accessibility CSS for critical styles
+         * Full styles available in swagger-accessibility.css
+         */
+        
+        /* WCAG 2.4.1: Bypass Blocks - Skip navigation link */
         .skip-link {
             position: absolute;
             top: -40px;
@@ -21,14 +27,14 @@
             top: 0;
         }
         
-        /* High contrast mode support */
+        /* WCAG 1.4.3: High contrast mode support */
         @media (prefers-contrast: high) {
             .swagger-ui .opblock {
                 border: 2px solid currentColor;
             }
         }
         
-        /* Reduced motion support */
+        /* WCAG 2.3.3: Reduced motion support for vestibular disorders */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
@@ -37,7 +43,7 @@
             }
         }
         
-        /* Focus indicators */
+        /* WCAG 2.4.7: Focus Visible - 3px outline with sufficient contrast */
         .swagger-ui button:focus,
         .swagger-ui a:focus,
         .swagger-ui input:focus,
@@ -49,10 +55,21 @@
     </style>
 </head>
 <body>
-    <!-- Skip navigation link for screen readers -->
+    <!-- 
+        WCAG 2.4.1: Bypass Blocks
+        Skip navigation link allows keyboard users to jump directly to main content
+        Hidden off-screen by default, becomes visible on keyboard focus
+    -->
     <a href="#swagger-ui" class="skip-link">Skip to API documentation</a>
     
-    <!-- Live region for announcements -->
+    <!-- 
+        WCAG 4.1.3: Status Messages
+        ARIA live region for announcing dynamic content changes to screen readers
+        - role="status": Indicates status updates
+        - aria-live="polite": Won't interrupt current speech
+        - aria-atomic="true": Entire message announced as one unit
+        Positioned off-screen but accessible to assistive technologies
+    -->
     <div id="aria-live-region" 
          role="status" 
          aria-live="polite" 
@@ -60,18 +77,26 @@
          style="position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden;">
     </div>
     
-    <!-- Main content with proper ARIA labels -->
+    <!-- 
+        Main content container with semantic role and label
+        role="main": Identifies primary content area
+        aria-label: Provides descriptive label for screen readers
+    -->
     <div id="swagger-ui" role="main" aria-label="API Documentation"></div>
     
+    <!-- Swagger UI JavaScript bundles -->
     <script src="./swagger-ui-bundle.js"></script>
     <script src="./swagger-ui-standalone-preset.js"></script>
     <script>
         window.onload = function() {
-            // Initialize Swagger UI with accessibility enhancements
+            /*
+             * Initialize Swagger UI with accessibility enhancements
+             * Configuration provides deep linking, API documentation, and download support
+             */
             const ui = SwaggerUIBundle({
                 url: window.location.pathname + "swagger/v1/swagger.json",
                 dom_id: '#swagger-ui',
-                deepLinking: true,
+                deepLinking: true,  // Enable URL hash navigation for bookmarking
                 presets: [
                     SwaggerUIBundle.presets.apis,
                     SwaggerUIStandalonePreset
@@ -81,19 +106,24 @@
                 ],
                 layout: "StandaloneLayout",
                 onComplete: function() {
-                    // Add ARIA labels to dynamically generated elements
+                    // Swagger UI has finished rendering, now enhance with accessibility features
                     enhanceAccessibility();
                     
-                    // Announce page load to screen readers
+                    // WCAG 4.1.3: Announce page load completion to screen readers
                     announceToScreenReader("API documentation loaded successfully. Use arrow keys to navigate.");
                 }
             });
             
+            // Make UI instance available globally for debugging
             window.ui = ui;
             
-            // Function to enhance accessibility of Swagger UI elements
+            /**
+             * Enhance accessibility of Swagger UI elements
+             * Adds ARIA attributes and keyboard support to dynamically generated content
+             * WCAG 2.1.1 (Keyboard), 4.1.2 (Name, Role, Value), 4.1.3 (Status Messages)
+             */
             function enhanceAccessibility() {
-                // Add ARIA labels to operation blocks
+                // Add ARIA labels to operation blocks (GET, POST, PUT, etc.)
                 const operations = document.querySelectorAll('.opblock');
                 operations.forEach((op, index) => {
                     const method = op.querySelector('.opblock-summary-method');
@@ -103,27 +133,36 @@
                         const methodText = method.textContent.trim();
                         const pathText = path.textContent.trim();
                         
-                        // Set ARIA label for the operation
+                        // WCAG 4.1.2: Provide accessible name
+                        // Screen readers will announce: "GET /about API operation"
                         op.setAttribute('aria-label', `${methodText} ${pathText} API operation`);
                         
                         // Make operation expandable accessible
                         const summary = op.querySelector('.opblock-summary');
                         if (summary) {
+                            // WCAG 4.1.2: Define semantic role
                             summary.setAttribute('role', 'button');
+                            
+                            // WCAG 4.1.3: Communicate expansion state
                             summary.setAttribute('aria-expanded', 'false');
+                            
+                            // WCAG 2.1.1: Enable keyboard focus
                             summary.setAttribute('tabindex', '0');
                             
-                            // Add keyboard support
+                            // WCAG 2.1.1: Add keyboard support for Enter and Space keys
                             summary.addEventListener('keydown', function(e) {
                                 if (e.key === 'Enter' || e.key === ' ') {
+                                    // Prevent default to avoid page scroll on Space
                                     e.preventDefault();
+                                    
+                                    // Trigger click to maintain consistency with mouse
                                     this.click();
                                     
-                                    // Update aria-expanded
+                                    // Update aria-expanded attribute to reflect new state
                                     const isExpanded = this.getAttribute('aria-expanded') === 'true';
                                     this.setAttribute('aria-expanded', !isExpanded);
                                     
-                                    // Announce state change
+                                    // WCAG 4.1.3: Announce state change to screen readers
                                     announceToScreenReader(
                                         `${methodText} ${pathText} operation ${!isExpanded ? 'expanded' : 'collapsed'}`
                                     );

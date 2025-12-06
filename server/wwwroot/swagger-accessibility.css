@@ -2,9 +2,19 @@
  * Swagger UI Accessibility Stylesheet
  * Enhances visual accessibility with better focus indicators, 
  * high contrast support, and reduced motion preferences
+ * 
+ * WCAG Compliance:
+ * - 1.4.3 Contrast (Minimum) - AA Level
+ * - 2.4.7 Focus Visible - AA Level
+ * - 1.4.11 Non-text Contrast - AA Level (2.1)
+ * - 2.3.3 Animation from Interactions - AAA Level (2.1)
  */
 
-/* Skip link for keyboard navigation */
+/* 
+ * Skip link for keyboard navigation
+ * WCAG 2.4.1: Bypass Blocks - Allows keyboard users to skip to main content
+ * Hidden by default, becomes visible on keyboard focus
+ */
 .skip-link {
     position: absolute;
     top: -40px;
@@ -17,11 +27,17 @@
     border-radius: 0 0 4px 0;
 }
 
+/* Show skip link when it receives keyboard focus */
 .skip-link:focus {
     top: 0;
 }
 
-/* Enhanced focus indicators for better keyboard navigation */
+/* 
+ * Enhanced focus indicators for better keyboard navigation
+ * WCAG 2.4.7: Focus Visible - AA Level
+ * Ensures 3px solid outline with sufficient contrast (meets 3:1 requirement)
+ * Box shadow provides additional visual emphasis
+ */
 .swagger-ui button:focus,
 .swagger-ui a:focus,
 .swagger-ui input:focus,
@@ -33,12 +49,20 @@
     box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3) !important;
 }
 
-/* Visible focus for operation blocks */
+/* 
+ * Visible focus for operation blocks
+ * Adds subtle background color change on focus for additional feedback
+ */
 .swagger-ui .opblock-summary:focus-visible {
     background-color: rgba(74, 144, 226, 0.1);
 }
 
-/* High contrast mode support */
+/* 
+ * High contrast mode support
+ * WCAG 1.4.3: Contrast (Minimum) - AA Level
+ * Adapts to user's system-level high contrast preferences
+ * Uses currentColor to inherit user's high contrast color scheme
+ */
 @media (prefers-contrast: high) {
     .swagger-ui .opblock {
         border: 2px solid currentColor !important;
@@ -56,11 +80,18 @@
     }
 }
 
-/* Reduced motion support for accessibility */
+/* 
+ * Reduced motion support for accessibility
+ * WCAG 2.3.3: Animation from Interactions - AAA Level (2.1)
+ * Respects user's system-level preference for reduced motion
+ * Essential for users with vestibular disorders who may experience
+ * dizziness, nausea, or disorientation from animations
+ */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
     *::after {
+        /* Effectively disable animations by making them instant */
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
@@ -68,14 +99,22 @@
     }
 }
 
-/* Better visibility for required fields */
+/* 
+ * Better visibility for required fields
+ * WCAG 3.3.2: Labels or Instructions - AA Level
+ * Adds "(required)" text to required field labels for clarity
+ */
 .swagger-ui .parameter__name.required::after {
     content: " (required)";
     color: #f00;
     font-weight: bold;
 }
 
-/* Screen reader only text helper class */
+/* 
+ * Screen reader only text helper class
+ * Standard technique to hide content visually while keeping it accessible
+ * Used for providing additional context to screen reader users
+ */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -88,12 +127,19 @@
     border-width: 0;
 }
 
-/* Enhanced button hover states for better visibility */
+/* 
+ * Enhanced button hover states for better visibility
+ * Provides visual feedback on hover for better user experience
+ */
 .swagger-ui .btn:hover {
     box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
-/* Better color contrast for responses */
+/* 
+ * Better color contrast for responses
+ * WCAG 1.4.3: Contrast (Minimum) - AA Level
+ * Bold text improves readability for status codes
+ */
 .swagger-ui .response-col_status {
     font-weight: bold;
 }

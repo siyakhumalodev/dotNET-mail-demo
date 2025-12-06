@@ -7,42 +7,72 @@
 (function() {
     'use strict';
     
-    // Create live region for screen reader announcements
+    /**
+     * Create an ARIA live region for screen reader announcements
+     * WCAG 4.1.3: Status Messages - Dynamic content changes must be announced
+     * The live region is visually hidden but accessible to screen readers
+     */
     function createLiveRegion() {
+        // Check if live region already exists to avoid duplicates
         if (document.getElementById('aria-live-region')) {
             return; // Already exists
         }
         
         const liveRegion = document.createElement('div');
         liveRegion.id = 'aria-live-region';
+        
+        // WCAG 4.1.3: role="status" indicates this is a status update region
         liveRegion.setAttribute('role', 'status');
+        
+        // aria-live="polite" means announcements won't interrupt current speech
+        // Use "assertive" only for critical updates (errors, warnings)
         liveRegion.setAttribute('aria-live', 'polite');
+        
+        // aria-atomic="true" means the entire region content is announced as one unit
         liveRegion.setAttribute('aria-atomic', 'true');
+        
+        // Visually hide the live region while keeping it accessible to screen readers
+        // Position off-screen instead of using display:none or visibility:hidden
         liveRegion.style.cssText = 'position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden;';
+        
+        // Insert at beginning of body to ensure it's discovered early
         document.body.insertBefore(liveRegion, document.body.firstChild);
     }
     
-    // Announce message to screen readers
+    /**
+     * Announce a message to screen readers via ARIA live region
+     * @param {string} message - The message to announce
+     * @param {string} priority - 'polite' (default) or 'assertive' for urgent messages
+     * 
+     * WCAG 4.1.3: Ensures dynamic content changes are communicated to users
+     */
     function announceToScreenReader(message, priority = 'polite') {
         const liveRegion = document.getElementById('aria-live-region');
         if (!liveRegion) return;
         
-        // Set priority (polite or assertive)
+        // Set priority level: 'polite' won't interrupt, 'assertive' will
+        // Use 'assertive' sparingly for critical updates only
         liveRegion.setAttribute('aria-live', priority);
         
-        // Clear and then set message (ensures it's announced)
+        // Clear the region first, then set message after a brief delay
+        // This ensures screen readers detect the change and announce it
         liveRegion.textContent = '';
         setTimeout(() => {
             liveRegion.textContent = message;
         }, 100);
     }
     
-    // Enhance operation blocks with accessibility features
+    /**
+     * Enhance operation blocks with accessibility features
+     * Adds ARIA attributes and keyboard navigation to API operation cards
+     * Complies with WCAG 2.1.1 (Keyboard) and 4.1.2 (Name, Role, Value)
+     */
     function enhanceOperations() {
+        // Select only operations that haven't been enhanced yet to avoid duplicate processing
         const operations = document.querySelectorAll('.opblock:not([data-a11y-enhanced])');
         
         operations.forEach((op) => {
-            // Mark as enhanced to avoid duplicate processing
+            // Mark as enhanced to prevent reprocessing on subsequent calls
             op.setAttribute('data-a11y-enhanced', 'true');
             
             const method = op.querySelector('.opblock-summary-method');
@@ -53,35 +83,44 @@
                 const methodText = method.textContent.trim();
                 const pathText = path.textContent.trim();
                 
-                // Set ARIA label
+                // WCAG 4.1.2: Provide accessible name for the operation
+                // Screen readers will announce: "GET /about API operation"
                 op.setAttribute('aria-label', `${methodText} ${pathText} API operation`);
                 
                 if (summary) {
-                    // Make expandable section accessible
+                    // WCAG 4.1.2: Define the role as button since it's clickable
                     summary.setAttribute('role', 'button');
+                    
+                    // WCAG 4.1.3: Communicate expansion state to screen readers
                     summary.setAttribute('aria-expanded', 'false');
                     
+                    // WCAG 2.1.1: Make keyboard focusable if not already
                     if (!summary.hasAttribute('tabindex')) {
                         summary.setAttribute('tabindex', '0');
                     }
                     
-                    // Track expansion state
+                    // Track expansion state changes using MutationObserver
+                    // This ensures aria-expanded stays in sync with visual state
                     const observer = new MutationObserver(() => {
                         const isExpanded = op.classList.contains('is-open');
                         summary.setAttribute('aria-expanded', isExpanded.toString());
                     });
                     
+                    // Only watch for class attribute changes for performance
                     observer.observe(op, {
                         attributes: true,
                         attributeFilter: ['class']
                     });
                     
-                    // Keyboard support
+                    // WCAG 2.1.1: Add keyboard support for Enter and Space keys
                     summary.addEventListener('keydown', function(e) {
                         if (e.key === 'Enter' || e.key === ' ') {
+                            // Prevent default to avoid page scroll on Space
                             e.preventDefault();
+                            // Trigger click to maintain consistency with mouse interaction
                             this.click();
                             
+                            // WCAG 4.1.3: Announce state change to screen readers
                             const isOpen = op.classList.contains('is-open');
                             announceToScreenReader(
                                 `${methodText} ${pathText} operation ${isOpen ? 'expanded' : 'collapsed'}`
@@ -93,9 +132,13 @@
         });
     }
     
-    // Enhance buttons with better labels
+    /**
+     * Enhance buttons with descriptive ARIA labels
+     * Ensures all interactive buttons are properly labeled for screen readers
+     * Complies with WCAG 4.1.2 (Name, Role, Value)
+     */
     function enhanceButtons() {
-        // Try it out buttons
+        // Try it out buttons - allow users to test API endpoints
         document.querySelectorAll('.try-out__btn:not([data-a11y-enhanced])').forEach(btn => {
             btn.setAttribute('data-a11y-enhanced', 'true');
             if (!btn.getAttribute('aria-label')) {

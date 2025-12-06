@@ -4,6 +4,22 @@
 
 This document summarizes the accessibility enhancements implemented for the Tailwind Traders Mail Services application. All changes follow WCAG 2.1 Level AA guidelines and support modern assistive technologies.
 
+## Code Documentation
+
+All implementation files include comprehensive inline documentation:
+
+- **WCAG References**: Comments reference specific WCAG criteria (e.g., "WCAG 2.4.7: Focus Visible")
+- **Purpose Explanations**: Each function and feature explains why it exists and what accessibility problem it solves
+- **Usage Examples**: JSDoc comments include practical usage examples
+- **Technical Details**: Complex logic is explained with inline comments for maintainability
+
+### Documentation Locations:
+- `server/Program.cs` - Accessibility configuration comments with WCAG references
+- `server/wwwroot/swagger-accessibility.js` - Detailed JSDoc and inline comments
+- `server/wwwroot/swagger-accessibility.css` - CSS comments explaining WCAG compliance
+- `server/wwwroot/swagger-custom.html` - HTML comments for ARIA usage
+- `cli/lib/accessibility.js` - Comprehensive JSDoc with examples
+
 ## What Was Implemented
 
 ### 1. Swagger UI Accessibility (API Documentation)
