@@ -187,6 +187,8 @@ mdmail <command> [options] <arguments>
 mdmail <command> --help
 ```
 
+For detailed CLI accessibility information, including screen reader support, keyboard navigation, and accessibility API, see the [CLI Accessibility Guide](CLI-ACCESSIBILITY.md).
+
 ### Visual Indicators
 
 The CLI uses symbols for quick visual scanning:
