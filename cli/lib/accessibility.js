@@ -185,7 +185,9 @@ async function accessibleSpinner(message, operation) {
     announce(message, 'info');
     
     const spinner = new Spinner(message + ' %s');
-    spinner.setSpinnerString(29);
+    // Spinner style 29 is a simple rotating animation that works well with screen readers
+    const SPINNER_STYLE = 29;
+    spinner.setSpinnerString(SPINNER_STYLE);
     spinner.start();
     
     try {

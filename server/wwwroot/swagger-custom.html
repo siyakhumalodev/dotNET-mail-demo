@@ -193,20 +193,22 @@
                 });
             }
             
+            // Keyboard shortcuts configuration
+            const KEYBOARD_SHORTCUTS_HELP = `
+                Keyboard shortcuts:
+                - Tab: Navigate through interactive elements
+                - Enter or Space: Activate buttons and expand/collapse sections
+                - Escape: Close expanded sections
+                - Alt + H: Show this help message
+            `;
+            
             // Keyboard shortcuts
             document.addEventListener('keydown', function(e) {
                 // Alt + H: Show keyboard shortcuts help
                 if (e.altKey && e.key === 'h') {
                     e.preventDefault();
-                    const helpMessage = `
-                        Keyboard shortcuts:
-                        - Tab: Navigate through interactive elements
-                        - Enter or Space: Activate buttons and expand/collapse sections
-                        - Escape: Close expanded sections
-                        - Alt + H: Show this help message
-                    `;
-                    announceToScreenReader(helpMessage);
-                    alert(helpMessage);
+                    announceToScreenReader(KEYBOARD_SHORTCUTS_HELP);
+                    alert(KEYBOARD_SHORTCUTS_HELP);
                 }
             });
             

@@ -180,19 +180,20 @@
     
     // Add keyboard shortcuts
     function setupKeyboardShortcuts() {
-        document.addEventListener('keydown', function(e) {
-            // Alt + H: Show help
-            if (e.altKey && e.key === 'h') {
-                e.preventDefault();
-                const helpMessage = `Keyboard Shortcuts:
+        // Keyboard shortcuts help text constant
+        const KEYBOARD_SHORTCUTS_HELP = `Keyboard Shortcuts:
 - Tab: Navigate through elements
 - Enter or Space: Activate buttons and expand sections
 - Escape: Close expanded sections
 - Alt + H: Show this help message
 - Alt + /: Focus on search (if available)`;
-                
-                announceToScreenReader(helpMessage);
-                alert(helpMessage);
+        
+        document.addEventListener('keydown', function(e) {
+            // Alt + H: Show help
+            if (e.altKey && e.key === 'h') {
+                e.preventDefault();
+                announceToScreenReader(KEYBOARD_SHORTCUTS_HELP);
+                alert(KEYBOARD_SHORTCUTS_HELP);
             }
             
             // Alt + /: Focus search
