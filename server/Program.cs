@@ -36,11 +36,25 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
+// Enable static files for custom Swagger UI
+app.UseStaticFiles();
+
 app.UseSwagger();
 app.UseSwaggerUI(options =>
 {
     options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
     options.RoutePrefix = string.Empty;
+    
+    // Accessibility enhancements
+    options.DocumentTitle = "Tailwind Traders Mail Services API - Accessible Documentation";
+    options.HeadContent = @"
+        <meta name=""description"" content=""Accessible API documentation for Tailwind Traders Mail Services"">
+        <meta name=""keywords"" content=""API, Mail, Accessible, Documentation"">
+    ";
+    
+    // Inject custom accessibility script
+    options.InjectJavascript("/swagger-accessibility.js");
+    options.InjectStylesheet("/swagger-accessibility.css");
 });
 var conn = DB.Postgres();
 Tailwind.Mail.Api.PublicRoutes.MapRoutes(app);

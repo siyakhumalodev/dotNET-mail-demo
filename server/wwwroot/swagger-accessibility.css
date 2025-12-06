@@ -1,0 +1,206 @@
+/**
+ * Swagger UI Accessibility Stylesheet
+ * Enhances visual accessibility with better focus indicators, 
+ * high contrast support, and reduced motion preferences
+ */
+
+/* Skip link for keyboard navigation */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 10000;
+    border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Enhanced focus indicators for better keyboard navigation */
+.swagger-ui button:focus,
+.swagger-ui a:focus,
+.swagger-ui input:focus,
+.swagger-ui select:focus,
+.swagger-ui textarea:focus,
+.swagger-ui .opblock-summary:focus {
+    outline: 3px solid #4A90E2 !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3) !important;
+}
+
+/* Visible focus for operation blocks */
+.swagger-ui .opblock-summary:focus-visible {
+    background-color: rgba(74, 144, 226, 0.1);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .swagger-ui .opblock {
+        border: 2px solid currentColor !important;
+    }
+    
+    .swagger-ui .btn {
+        border: 2px solid currentColor !important;
+    }
+    
+    .swagger-ui button:focus,
+    .swagger-ui a:focus,
+    .swagger-ui input:focus {
+        outline: 3px solid currentColor !important;
+        outline-offset: 2px !important;
+    }
+}
+
+/* Reduced motion support for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Better visibility for required fields */
+.swagger-ui .parameter__name.required::after {
+    content: " (required)";
+    color: #f00;
+    font-weight: bold;
+}
+
+/* Screen reader only text helper class */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Enhanced button hover states for better visibility */
+.swagger-ui .btn:hover {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Better color contrast for responses */
+.swagger-ui .response-col_status {
+    font-weight: bold;
+}
+
+/* Improve table readability */
+.swagger-ui table {
+    border-collapse: collapse;
+}
+
+.swagger-ui table th,
+.swagger-ui table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+/* Dark mode support with proper contrast */
+@media (prefers-color-scheme: dark) {
+    .swagger-ui {
+        color-scheme: dark;
+    }
+    
+    .swagger-ui button:focus,
+    .swagger-ui a:focus,
+    .swagger-ui input:focus {
+        outline-color: #6CB4EE !important;
+    }
+}
+
+/* Better loading states */
+.swagger-ui .loading-container {
+    position: relative;
+}
+
+.swagger-ui .loading-container::after {
+    content: "Loading...";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Accessible error messages */
+.swagger-ui .errors {
+    border-left: 4px solid #f00;
+    padding-left: 12px;
+    margin: 12px 0;
+}
+
+/* Better spacing for touch targets (44x44px minimum) */
+.swagger-ui .btn,
+.swagger-ui button,
+.swagger-ui .opblock-summary {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 8px 16px;
+}
+
+/* Improve readability with better line height */
+.swagger-ui .renderedMarkdown p,
+.swagger-ui .renderedMarkdown li {
+    line-height: 1.6;
+}
+
+/* Clear visual indication of interactive elements */
+.swagger-ui .opblock-summary {
+    cursor: pointer;
+    user-select: none;
+}
+
+.swagger-ui .opblock-summary:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Status code colors with sufficient contrast */
+.swagger-ui .response-col_status {
+    min-width: 80px;
+}
+
+/* Better form field spacing */
+.swagger-ui .parameters-col_description input,
+.swagger-ui .parameters-col_description textarea {
+    margin-top: 4px;
+}
+
+/* Ensure sufficient color contrast for links */
+.swagger-ui a {
+    color: #0066cc;
+    text-decoration: underline;
+}
+
+.swagger-ui a:visited {
+    color: #551a8b;
+}
+
+.swagger-ui a:hover,
+.swagger-ui a:focus {
+    color: #003d7a;
+    text-decoration: underline;
+}
+
+/* Print styles for accessibility */
+@media print {
+    .swagger-ui .opblock-summary {
+        page-break-inside: avoid;
+    }
+    
+    .skip-link {
+        display: none;
+    }
+}
