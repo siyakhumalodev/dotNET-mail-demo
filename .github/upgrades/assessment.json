@@ -1,0 +1,488 @@
+{
+  "settings": {
+    "components": {
+      "code": false,
+      "binaries": false
+    },
+    "targetId": "net10.0",
+    "targetDisplayName": ".NETCoreApp,Version=v10.0"
+  },
+  "analysisStartTime": "2025-12-08T00:15:25.8839202Z",
+  "analysisEndTime": "2025-12-08T00:15:35.1072414Z",
+  "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2270980",
+  "stats": {
+    "summary": {
+      "projects": 1,
+      "issues": 5,
+      "incidents": 14,
+      "effort": 14
+    },
+    "charts": {
+      "severity": {
+        "Mandatory": 1,
+        "Optional": 1,
+        "Potential": 12,
+        "Information": 0
+      },
+      "category": {
+        "NuGet": 4,
+        "Project": 1,
+        "Api": 9
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "server\\Tailwind.Mail.csproj",
+      "startingProject": true,
+      "issues": 5,
+      "storyPoints": 14,
+      "properties": {
+        "appName": "Tailwind.Mail",
+        "projectKind": "AspNetCore",
+        "frameworks": [
+          "net8.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "numberOfFiles": 31,
+        "numberOfCodeFiles": 25,
+        "linesTotal": 3341,
+        "linesOfCode": 1409,
+        "totalApiScanned": 1653,
+        "minLinesOfCodeToChange": 9,
+        "maxLinesOfCodeToChange": 9
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "d581a8e5-6d9b-419b-8750-d487874fdf8d",
+          "ruleId": "NuGet.0002",
+          "projectPath": "server\\Tailwind.Mail.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, 7.0.11\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, and replace with new package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore 10.0.0",
+              "protected": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, 7.0.11\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, and replace with new package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore 10.0.0"
+            },
+            "kind": "File",
+            "path": "server\\Tailwind.Mail.csproj",
+            "snippet": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, 7.0.11\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, and replace with new package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore 10.0.0",
+            "protectedSnippet": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, 7.0.11\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore, and replace with new package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore 10.0.0",
+            "label": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore 7.0.11",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore",
+              "PackageVersion": "7.0.11",
+              "PackageNewVersion": "10.0.0",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "e68496ac-87ae-41ba-878d-182f06194c3a",
+          "ruleId": "NuGet.0002",
+          "projectPath": "server\\Tailwind.Mail.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNetCore.Mvc.Testing, 7.0.2\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Mvc.Testing, and replace with new package Microsoft.AspNetCore.Mvc.Testing 10.0.0",
+              "protected": "Microsoft.AspNetCore.Mvc.Testing, 7.0.2\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Mvc.Testing, and replace with new package Microsoft.AspNetCore.Mvc.Testing 10.0.0"
+            },
+            "kind": "File",
+            "path": "server\\Tailwind.Mail.csproj",
+            "snippet": "Microsoft.AspNetCore.Mvc.Testing, 7.0.2\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Mvc.Testing, and replace with new package Microsoft.AspNetCore.Mvc.Testing 10.0.0",
+            "protectedSnippet": "Microsoft.AspNetCore.Mvc.Testing, 7.0.2\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.Mvc.Testing, and replace with new package Microsoft.AspNetCore.Mvc.Testing 10.0.0",
+            "label": "Microsoft.AspNetCore.Mvc.Testing 7.0.2",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.Mvc.Testing",
+              "PackageVersion": "7.0.2",
+              "PackageNewVersion": "10.0.0",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "a9bb2e35-70b8-49ae-8785-cef5b5c9fe8a",
+          "ruleId": "NuGet.0002",
+          "projectPath": "server\\Tailwind.Mail.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.AspNetCore.OpenApi, 8.0.1\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.OpenApi, and replace with new package Microsoft.AspNetCore.OpenApi 10.0.0",
+              "protected": "Microsoft.AspNetCore.OpenApi, 8.0.1\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.OpenApi, and replace with new package Microsoft.AspNetCore.OpenApi 10.0.0"
+            },
+            "kind": "File",
+            "path": "server\\Tailwind.Mail.csproj",
+            "snippet": "Microsoft.AspNetCore.OpenApi, 8.0.1\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.OpenApi, and replace with new package Microsoft.AspNetCore.OpenApi 10.0.0",
+            "protectedSnippet": "Microsoft.AspNetCore.OpenApi, 8.0.1\n\nRecommendation:\n\nRemove Microsoft.AspNetCore.OpenApi, and replace with new package Microsoft.AspNetCore.OpenApi 10.0.0",
+            "label": "Microsoft.AspNetCore.OpenApi 8.0.1",
+            "properties": {
+              "PackageId": "Microsoft.AspNetCore.OpenApi",
+              "PackageVersion": "8.0.1",
+              "PackageNewVersion": "10.0.0",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "5b62dcd8-6c67-47ad-883b-238a0c67c3b0",
+          "ruleId": "NuGet.0004",
+          "projectPath": "server\\Tailwind.Mail.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Npgsql, 8.0.1\n\nRecommendation:\n\nNpgsql, 10.0.0",
+              "protected": "Npgsql, 8.0.1\n\nRecommendation:\n\nNpgsql, 10.0.0"
+            },
+            "kind": "File",
+            "path": "server\\Tailwind.Mail.csproj",
+            "snippet": "Npgsql, 8.0.1\n\nRecommendation:\n\nNpgsql, 10.0.0",
+            "protectedSnippet": "Npgsql, 8.0.1\n\nRecommendation:\n\nNpgsql, 10.0.0",
+            "label": "Npgsql 8.0.1",
+            "properties": {
+              "PackageId": "Npgsql",
+              "PackageVersion": "8.0.1",
+              "PackageNewVersion": "10.0.0",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "e85aef8f-5b03-4086-bcb4-10468063f308",
+          "ruleId": "Project.0002",
+          "projectPath": "server\\Tailwind.Mail.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net8.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "server\\Tailwind.Mail.csproj",
+            "snippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        },
+        {
+          "incidentId": "51de383c-b243-427f-bbe8-4f2517a945cf",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "server\\Tailwind.Mail.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Uri azureOpenAIResourceUri = new(config.Get(\u0022AZURE_OPENAI_ENDPOINT\u0022));",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "server\\Services\\AI.cs",
+            "snippet": "Uri azureOpenAIResourceUri = new(config.Get(\u0022AZURE_OPENAI_ENDPOINT\u0022));",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 20,
+            "column": 6
+          }
+        },
+        {
+          "incidentId": "67a59d63-15aa-4395-a569-6f431cb7072e",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "server\\Tailwind.Mail.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Uri azureOpenAIResourceUri = new(config.Get(\u0022AZURE_OPENAI_ENDPOINT\u0022));",
+              "protected": "M:System.Uri.#ctor(System.String)"
+            },
+            "kind": "File",
+            "path": "server\\Services\\AI.cs",
+            "snippet": "Uri azureOpenAIResourceUri = new(config.Get(\u0022AZURE_OPENAI_ENDPOINT\u0022));",
+            "protectedSnippet": "M:System.Uri.#ctor(System.String)",
+            "label": "M:System.Uri.#ctor(System.String)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 20,
+            "column": 6
+          }
+        },
+        {
+          "incidentId": "c1dd315f-7cc8-470f-90de-805640f01179",
+          "ruleId": "Api.0002",
+          "description": "Breaking change: New TimeSpan.From*() overloads that take integers ",
+          "projectPath": "server\\Tailwind.Mail.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await Task.Delay(TimeSpan.FromMinutes(1), stoppingToken);",
+              "protected": "M:System.TimeSpan.FromMinutes(System.Double)"
+            },
+            "kind": "File",
+            "path": "server\\Services\\BackgroundSend.cs",
+            "snippet": "await Task.Delay(TimeSpan.FromMinutes(1), stoppingToken);",
+            "protectedSnippet": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "label": "M:System.TimeSpan.FromMinutes(System.Double)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/core-libraries/9.0/timespan-from-overloads.md",
+                "isCustom": false
+              }
+            ],
+            "line": 48,
+            "column": 6
+          }
+        },
+        {
+          "incidentId": "39fb1a52-1d01-4bbb-9831-07a0189fb8c8",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "server\\Tailwind.Mail.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "options.SwaggerDoc(\u0022v1\u0022, new OpenApiInfo\r\n    {\r\n        Version = \u00220.0.1\u0022,\r\n        Title = \u0022Tailwind Traders Mail Services API\u0022,\r\n        Description = \u0022Transactional and bulk email sending services for Tailwind Traders.\u0022,\r\n        Contact = new OpenApiContact\r\n        {\r\n            Name = \u0022Rob Conery, Aaron Wislang, and the Tailwind Traders Team\u0022,\r\n            Url = new Uri(\u0022https://tailwindtraders.dev\u0022)\r\n        },\r\n        License = new OpenApiLicense\r\n        {\r\n            Name = \u0022MIT\u0022,\r\n            Url = new Uri(\u0022https://opensource.org/license/mit/\u0022)\r\n        }\r\n    });",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "server\\Program.cs",
+            "snippet": "options.SwaggerDoc(\u0022v1\u0022, new OpenApiInfo\r\n    {\r\n        Version = \u00220.0.1\u0022,\r\n        Title = \u0022Tailwind Traders Mail Services API\u0022,\r\n        Description = \u0022Transactional and bulk email sending services for Tailwind Traders.\u0022,\r\n        Contact = new OpenApiContact\r\n        {\r\n            Name = \u0022Rob Conery, Aaron Wislang, and the Tailwind Traders Team\u0022,\r\n            Url = new Uri(\u0022https://tailwindtraders.dev\u0022)\r\n        },\r\n        License = new OpenApiLicense\r\n        {\r\n            Name = \u0022MIT\u0022,\r\n            Url = new Uri(\u0022https://opensource.org/license/mit/\u0022)\r\n        }\r\n    });",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 17,
+            "column": 4
+          }
+        },
+        {
+          "incidentId": "5463d753-b25d-4252-afa3-91440392c993",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "server\\Tailwind.Mail.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "options.SwaggerDoc(\u0022v1\u0022, new OpenApiInfo\r\n    {\r\n        Version = \u00220.0.1\u0022,\r\n        Title = \u0022Tailwind Traders Mail Services API\u0022,\r\n        Description = \u0022Transactional and bulk email sending services for Tailwind Traders.\u0022,\r\n        Contact = new OpenApiContact\r\n        {\r\n            Name = \u0022Rob Conery, Aaron Wislang, and the Tailwind Traders Team\u0022,\r\n            Url = new Uri(\u0022https://tailwindtraders.dev\u0022)\r\n        },\r\n        License = new OpenApiLicense\r\n        {\r\n            Name = \u0022MIT\u0022,\r\n            Url = new Uri(\u0022https://opensource.org/license/mit/\u0022)\r\n        }\r\n    });",
+              "protected": "M:System.Uri.#ctor(System.String)"
+            },
+            "kind": "File",
+            "path": "server\\Program.cs",
+            "snippet": "options.SwaggerDoc(\u0022v1\u0022, new OpenApiInfo\r\n    {\r\n        Version = \u00220.0.1\u0022,\r\n        Title = \u0022Tailwind Traders Mail Services API\u0022,\r\n        Description = \u0022Transactional and bulk email sending services for Tailwind Traders.\u0022,\r\n        Contact = new OpenApiContact\r\n        {\r\n            Name = \u0022Rob Conery, Aaron Wislang, and the Tailwind Traders Team\u0022,\r\n            Url = new Uri(\u0022https://tailwindtraders.dev\u0022)\r\n        },\r\n        License = new OpenApiLicense\r\n        {\r\n            Name = \u0022MIT\u0022,\r\n            Url = new Uri(\u0022https://opensource.org/license/mit/\u0022)\r\n        }\r\n    });",
+            "protectedSnippet": "M:System.Uri.#ctor(System.String)",
+            "label": "M:System.Uri.#ctor(System.String)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 17,
+            "column": 4
+          }
+        },
+        {
+          "incidentId": "0fa8fc6b-c076-4493-a6f1-0d53ff7071fa",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "server\\Tailwind.Mail.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "options.SwaggerDoc(\u0022v1\u0022, new OpenApiInfo\r\n    {\r\n        Version = \u00220.0.1\u0022,\r\n        Title = \u0022Tailwind Traders Mail Services API\u0022,\r\n        Description = \u0022Transactional and bulk email sending services for Tailwind Traders.\u0022,\r\n        Contact = new OpenApiContact\r\n        {\r\n            Name = \u0022Rob Conery, Aaron Wislang, and the Tailwind Traders Team\u0022,\r\n            Url = new Uri(\u0022https://tailwindtraders.dev\u0022)\r\n        },\r\n        License = new OpenApiLicense\r\n        {\r\n            Name = \u0022MIT\u0022,\r\n            Url = new Uri(\u0022https://opensource.org/license/mit/\u0022)\r\n        }\r\n    });",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "server\\Program.cs",
+            "snippet": "options.SwaggerDoc(\u0022v1\u0022, new OpenApiInfo\r\n    {\r\n        Version = \u00220.0.1\u0022,\r\n        Title = \u0022Tailwind Traders Mail Services API\u0022,\r\n        Description = \u0022Transactional and bulk email sending services for Tailwind Traders.\u0022,\r\n        Contact = new OpenApiContact\r\n        {\r\n            Name = \u0022Rob Conery, Aaron Wislang, and the Tailwind Traders Team\u0022,\r\n            Url = new Uri(\u0022https://tailwindtraders.dev\u0022)\r\n        },\r\n        License = new OpenApiLicense\r\n        {\r\n            Name = \u0022MIT\u0022,\r\n            Url = new Uri(\u0022https://opensource.org/license/mit/\u0022)\r\n        }\r\n    });",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 17,
+            "column": 4
+          }
+        },
+        {
+          "incidentId": "e04ed848-9a96-4a0e-92cc-7aa382795b13",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "server\\Tailwind.Mail.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "options.SwaggerDoc(\u0022v1\u0022, new OpenApiInfo\r\n    {\r\n        Version = \u00220.0.1\u0022,\r\n        Title = \u0022Tailwind Traders Mail Services API\u0022,\r\n        Description = \u0022Transactional and bulk email sending services for Tailwind Traders.\u0022,\r\n        Contact = new OpenApiContact\r\n        {\r\n            Name = \u0022Rob Conery, Aaron Wislang, and the Tailwind Traders Team\u0022,\r\n            Url = new Uri(\u0022https://tailwindtraders.dev\u0022)\r\n        },\r\n        License = new OpenApiLicense\r\n        {\r\n            Name = \u0022MIT\u0022,\r\n            Url = new Uri(\u0022https://opensource.org/license/mit/\u0022)\r\n        }\r\n    });",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "server\\Program.cs",
+            "snippet": "options.SwaggerDoc(\u0022v1\u0022, new OpenApiInfo\r\n    {\r\n        Version = \u00220.0.1\u0022,\r\n        Title = \u0022Tailwind Traders Mail Services API\u0022,\r\n        Description = \u0022Transactional and bulk email sending services for Tailwind Traders.\u0022,\r\n        Contact = new OpenApiContact\r\n        {\r\n            Name = \u0022Rob Conery, Aaron Wislang, and the Tailwind Traders Team\u0022,\r\n            Url = new Uri(\u0022https://tailwindtraders.dev\u0022)\r\n        },\r\n        License = new OpenApiLicense\r\n        {\r\n            Name = \u0022MIT\u0022,\r\n            Url = new Uri(\u0022https://opensource.org/license/mit/\u0022)\r\n        }\r\n    });",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 17,
+            "column": 4
+          }
+        },
+        {
+          "incidentId": "5cdd2204-1b90-4c3c-bc31-2378c115f8a8",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "server\\Tailwind.Mail.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "options.SwaggerDoc(\u0022v1\u0022, new OpenApiInfo\r\n    {\r\n        Version = \u00220.0.1\u0022,\r\n        Title = \u0022Tailwind Traders Mail Services API\u0022,\r\n        Description = \u0022Transactional and bulk email sending services for Tailwind Traders.\u0022,\r\n        Contact = new OpenApiContact\r\n        {\r\n            Name = \u0022Rob Conery, Aaron Wislang, and the Tailwind Traders Team\u0022,\r\n            Url = new Uri(\u0022https://tailwindtraders.dev\u0022)\r\n        },\r\n        License = new OpenApiLicense\r\n        {\r\n            Name = \u0022MIT\u0022,\r\n            Url = new Uri(\u0022https://opensource.org/license/mit/\u0022)\r\n        }\r\n    });",
+              "protected": "M:System.Uri.#ctor(System.String)"
+            },
+            "kind": "File",
+            "path": "server\\Program.cs",
+            "snippet": "options.SwaggerDoc(\u0022v1\u0022, new OpenApiInfo\r\n    {\r\n        Version = \u00220.0.1\u0022,\r\n        Title = \u0022Tailwind Traders Mail Services API\u0022,\r\n        Description = \u0022Transactional and bulk email sending services for Tailwind Traders.\u0022,\r\n        Contact = new OpenApiContact\r\n        {\r\n            Name = \u0022Rob Conery, Aaron Wislang, and the Tailwind Traders Team\u0022,\r\n            Url = new Uri(\u0022https://tailwindtraders.dev\u0022)\r\n        },\r\n        License = new OpenApiLicense\r\n        {\r\n            Name = \u0022MIT\u0022,\r\n            Url = new Uri(\u0022https://opensource.org/license/mit/\u0022)\r\n        }\r\n    });",
+            "protectedSnippet": "M:System.Uri.#ctor(System.String)",
+            "label": "M:System.Uri.#ctor(System.String)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 17,
+            "column": 4
+          }
+        },
+        {
+          "incidentId": "3d8024c1-a38c-439d-be89-2eb13075537e",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "server\\Tailwind.Mail.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "options.SwaggerDoc(\u0022v1\u0022, new OpenApiInfo\r\n    {\r\n        Version = \u00220.0.1\u0022,\r\n        Title = \u0022Tailwind Traders Mail Services API\u0022,\r\n        Description = \u0022Transactional and bulk email sending services for Tailwind Traders.\u0022,\r\n        Contact = new OpenApiContact\r\n        {\r\n            Name = \u0022Rob Conery, Aaron Wislang, and the Tailwind Traders Team\u0022,\r\n            Url = new Uri(\u0022https://tailwindtraders.dev\u0022)\r\n        },\r\n        License = new OpenApiLicense\r\n        {\r\n            Name = \u0022MIT\u0022,\r\n            Url = new Uri(\u0022https://opensource.org/license/mit/\u0022)\r\n        }\r\n    });",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "server\\Program.cs",
+            "snippet": "options.SwaggerDoc(\u0022v1\u0022, new OpenApiInfo\r\n    {\r\n        Version = \u00220.0.1\u0022,\r\n        Title = \u0022Tailwind Traders Mail Services API\u0022,\r\n        Description = \u0022Transactional and bulk email sending services for Tailwind Traders.\u0022,\r\n        Contact = new OpenApiContact\r\n        {\r\n            Name = \u0022Rob Conery, Aaron Wislang, and the Tailwind Traders Team\u0022,\r\n            Url = new Uri(\u0022https://tailwindtraders.dev\u0022)\r\n        },\r\n        License = new OpenApiLicense\r\n        {\r\n            Name = \u0022MIT\u0022,\r\n            Url = new Uri(\u0022https://opensource.org/license/mit/\u0022)\r\n        }\r\n    });",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 17,
+            "column": 4
+          }
+        }
+      ],
+      "features": []
+    }
+  ],
+  "rules": {
+    "NuGet.0002": {
+      "id": "NuGet.0002",
+      "isFeature": false,
+      "description": "NuGet package upgrade is recommended for selected target framework.\n\nStandard .NET packages are recommended to have versions matching version of .NET that project targets.\n\nSome other packages also are known to work better for selected target frameworks.",
+      "label": "NuGet package upgrade is recommended",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262530",
+          "isCustom": false
+        }
+      ]
+    },
+    "NuGet.0004": {
+      "id": "NuGet.0004",
+      "isFeature": false,
+      "description": "NuGet package contains security vulnerabilities.\n\nPackage needs to be upgraded to a newer version that addresses known security vulnerabilities.",
+      "label": "NuGet package contains security vulnerability",
+      "severity": "Optional",
+      "effort": 1
+    },
+    "Project.0002": {
+      "id": "Project.0002",
+      "isFeature": false,
+      "description": "Project\u0027s target framework(s) needs to be changed to the new target framework that you selected for this upgrade.\n\nDuring upgrade target framework will be adjusted to corresponding platform when applicable. In some cases project would result in multiple target frameworks after the upgrade if it was using features that now have their own platforms in modern .NET frameworks (windows, iOS, Android etc).",
+      "label": "Project\u0027s target framework(s) needs to be changed",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Overview of porting from .NET Framework to .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": ".NET project SDKs",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    },
+    "Api.0003": {
+      "id": "Api.0003",
+      "isFeature": false,
+      "description": "API has a behavioral change in selected .NET version: code and binaries may behave differently at runtime without needing recompilation, but the new behavior might be undesirable and require updates.",
+      "label": "Behavioral change in selected .NET version",
+      "severity": "Potential",
+      "effort": 1
+    },
+    "Api.0002": {
+      "id": "Api.0002",
+      "isFeature": false,
+      "description": "API is source incompatible for selected .NET version: requires code changes to compile successfully when targeting a new version, such as removing obsolete APIs or changing method signatures.",
+      "label": "Source incompatible for selected .NET version",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Breaking changes in .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262679",
+          "isCustom": false
+        }
+      ]
+    }
+  }
+}
