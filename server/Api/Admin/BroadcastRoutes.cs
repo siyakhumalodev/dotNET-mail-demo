@@ -73,11 +73,6 @@ public class BroadcastRoutes{
       }
 
       //return response;
-    }).WithOpenApi(op => {
-      op.Summary = "Queue a broadcast for your contacts";
-      op.Description = "This pops the messages for your broadcast into the queue and double checks the validation";
-      op.RequestBody.Description = "The markdown for the email";
-      return op;
     });
     //validate a broadcast
     app.MapPost("/admin/queue-broadcast", ([FromBody] ValidationRequest req,  [FromServices] IDb db) => {
@@ -100,11 +95,6 @@ public class BroadcastRoutes{
       };
 
       return response;
-    }).WithOpenApi(op => {
-      op.Summary = "Queue a broadcast for your contacts";
-      op.Description = "This pops the messages for your broadcast into the queue and double checks the validation";
-      op.RequestBody.Description = "The markdown for the email";
-      return op;
     });
 
     app.MapPost("/admin/validate", ([FromBody] ValidationRequest req,  [FromServices] IDb db) => {
@@ -133,12 +123,6 @@ public class BroadcastRoutes{
         Contacts = contacts
       };
       return response;
-    })
-    .WithOpenApi(op => {
-      op.Summary = "Validate the markdown for an email";
-      op.Description = "Before you send a broadcast, ping this endpoint to ensure that the markdown is valid";
-      op.RequestBody.Description = "The markdown for the email";
-      return op;
     })
     .Produces<ValidationResponse>(StatusCodes.Status200OK)
     .Produces(StatusCodes.Status400BadRequest)

@@ -48,10 +48,6 @@ public class BulkOperationRoutes{
         Updated = totalUpdated,
         Message = $"{tags.Count()} Tag(s) applied to {request.Emails.Count()} contacts"  
       };
-    }).WithOpenApi(op => {
-      op.Summary = "Tag a set of contacts";
-      op.Description = "Tag a set of contacts";
-      return op;
     }).Produces<CommandResult>()
     .Produces(500);
   }

@@ -29,10 +29,6 @@ public class ContactRoutes{
       using var conn = db.Connect();
       response.Contacts = conn.Query<Contact>(sql, new {term});
       return response;
-    }).WithOpenApi(op => {
-      op.Summary = "Find one or more contacts using a fuzzy match on email or name";
-      op.Description = "Find a set of contacts using a search term";
-      return op;
     }).Produces<ContactSearchResponse>()
     .Produces(500);
   }
