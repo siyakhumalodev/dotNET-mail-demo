@@ -1,0 +1,11 @@
+# VS Code settings with sensitive tokens
+.vscode/settings.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+bin/
+obj/
+.vscode/settings.json
